@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0" />
+    <title>下载安装包</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+            zoom: 1;
+            outline: none;
+        }
+
+        html, img {
+            border: 0 none;
+        }
+
+        html {
+            overflow-y: scroll;
+            overflow-x: auto;
+            background-color: #ffffff;
+        }
+
+        body {
+            background-color: #ffffff;
+            font-size: 15px;
+            line-height: 26px;
+            color: #666;
+            height: 100%;
+            width: 100%;
+        }
+
+        img {
+            display: block;
+            width: 100%;
+            cursor: pointer;
+        }
+		video {
+		    width: 100%;
+			height: auto;
+		}
+        .body_section {
+            padding: 10px 15px 10px;
+            word-break:break-all;
+        }
+
+            .body_section p {
+                margin: 10px 0;
+                word-break:break-all;
+            }
+
+            .body_section img {
+                text-align: center;
+            }
+
+	  .body_content{
+	     word-break:break-all;
+	   }
+	    .body_content p {
+                margin: 10px 0;
+                word-break:break-all;
+            }
+
+            .body_content img,.body_content video {
+                text-align: center;
+            }
+    </style>
+</head>
+<script type="text/javascript" src="js/jquery-1.4.4.min.js"></script>
+<script>
+    function downloadApp() {
+        var ua = navigator.userAgent.toLowerCase();
+        if (ua.match(/android/i)) {
+            if (ua.match(/micromessenger/i)) {
+                showBox1();
+            }
+            else {
+                $("#btn_down").attr("href", "http://192.168.10.19:8000/butler_133_3.7.7_beta.apk");
+            }
+        }
+        else if (ua.match(/iphone|ipad|ipod/i)) {
+
+            if (ua.match(/micromessenger/i)) {
+                showBox();
+            }
+            else {
+                $("#btn_down").attr("href", "itms-services://?action=download-manifest&url=https://192.168.10.19:8000/butler.plist");
+            }
+        } else {
+
+        }
+
+    }
+    function showBox() {
+        alert("请点击右上角按钮选择“在Safari中打开”下载！"); return false;
+    }
+    function showBox1() {
+        alert("请点击右上角按钮选择“在浏览器中打开”下载！"); return false;
+    }
+
+</script>
+<body>
+    </br>
+    <center><a id="btn_down" href="javascript:;"><button type="button" style="height: 40px;width: 100px" onclick="downloadApp()">下载iOS版</button></a></center>
+
+
+    <br>
+    <br>
+    <a href="server.crt">请先安装证书</a>
+</body>
+</html>
