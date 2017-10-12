@@ -26,18 +26,18 @@ void* pcmToWav(const void *pcm, unsigned int pcmlen, unsigned int *wavlen)
 	//wav文件多了44个字节
 	*wavlen = pcmlen + 44;
 	//添加wav文件头
-	memcpy(wav, "RIFF", 4);
-	*(int *)((char*)wav + 4) = pcmlen + 36;
-	memcpy(((char*)wav + 8), "WAVEfmt ", 8);
-	*(int *)((char*)wav + 16) = 16;
-	*(short *)((char*)wav + 20) = 1;
-	*(short *)((char*)wav + 22) = 1;
-	*(int *)((char*)wav + 24) = 8000;
-	*(int *)((char*)wav + 28) = 16000;
-	*(short *)((char*)wav + 32) = 16 / 8;
-	*(short *)((char*)wav + 34) = 16;
-	strcpy((char*)((char*)wav + 36), "data");
-	*(int *)((char*)wav + 40) = pcmlen;
+	memcpy(wav, "RIFF", 4); //标志
+	*(int *)((char*)wav + 4) = pcmlen + 36; //从下个地址开始到文件尾的总字节数
+	memcpy(((char*)wav + 8), "WAVEfmt ", 8); //4字节的WAV文件标志，接着是波形格式标志fmt ,最后一位空格
+	*(int *)((char*)wav + 16) = 16; //过滤字节一般为一般为00000010H
+	*(short *)((char*)wav + 20) = 1; //格式种类，值为1时，表示数据为线性pcm编码
+	*(short *)((char*)wav + 22) = 1; //通道数，单声道为1，双声道为2
+	*(int *)((char*)wav + 24) = 16000; //采样频率
+	*(int *)((char*)wav + 28) = 16000; //波形数据传输速率（每秒平均字节数）
+	*(short *)((char*)wav + 32) = 16 / 8; //DATA数据块长度，字节
+	*(short *)((char*)wav + 34) = 16; //PCM位宽
+	strcpy((char*)((char*)wav + 36), "data"); //数据标志符（data）
+	*(int *)((char*)wav + 40) = pcmlen; //data总数据长度字节
 
 	//拷贝pcm数据到wav中
 	memcpy((char*)wav + 44, pcm, pcmlen);
