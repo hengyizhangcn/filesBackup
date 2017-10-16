@@ -1,0 +1,15 @@
+http://yy.baidu.com/asr#m5
+
+number = 一, 二, 三
+unit = 袋
+weightNumber = 五
+weightUnit = 公斤, 千克
+brand = 稻花香
+productName = 五常
+goods = 大米
+
+
+buy.search = <number><unit><weightNumber><weightUnit><brand><productName><goods>
+
+
+一袋五公斤稻花香五常大米
