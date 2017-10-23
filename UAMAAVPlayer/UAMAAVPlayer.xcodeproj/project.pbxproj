@@ -12,6 +12,7 @@
 		1E4D7DB51F94AA8C00DB6902 /* libopencore-amrwb.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E4D7DB11F94AA8C00DB6902 /* libopencore-amrwb.a */; };
 		1E4D7DB71F94AB0100DB6902 /* uama_record.wav in Resources */ = {isa = PBXBuildFile; fileRef = 1E4D7DB61F94AB0000DB6902 /* uama_record.wav */; };
 		1E4D7DB91F94AD8000DB6902 /* uama_record.amr in Resources */ = {isa = PBXBuildFile; fileRef = 1E4D7DB81F94AD7F00DB6902 /* uama_record.amr */; };
+		1E4D7DBC1F971BE600DB6902 /* AMRPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E4D7DBB1F971BE600DB6902 /* AMRPlayer.m */; };
 		1E65125C1F8F6862002763D8 /* urec_a.data in Resources */ = {isa = PBXBuildFile; fileRef = 1E65125B1F8F6862002763D8 /* urec_a.data */; };
 		1E65125E1F8F6A02002763D8 /* uama_record.pcm in Resources */ = {isa = PBXBuildFile; fileRef = 1E65125D1F8F6A02002763D8 /* uama_record.pcm */; };
 		1E8F15751F8F60E600854176 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E8F15741F8F60E600854176 /* AppDelegate.m */; };
@@ -34,6 +35,8 @@
 		1E4D7DB21F94AA8C00DB6902 /* MQEncodeAudio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MQEncodeAudio.h; sourceTree = "<group>"; };
 		1E4D7DB61F94AB0000DB6902 /* uama_record.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = uama_record.wav; sourceTree = "<group>"; };
 		1E4D7DB81F94AD7F00DB6902 /* uama_record.amr */ = {isa = PBXFileReference; lastKnownFileType = file; path = uama_record.amr; sourceTree = "<group>"; };
+		1E4D7DBA1F971BE600DB6902 /* AMRPlayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AMRPlayer.h; sourceTree = "<group>"; };
+		1E4D7DBB1F971BE600DB6902 /* AMRPlayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AMRPlayer.m; sourceTree = "<group>"; };
 		1E65125B1F8F6862002763D8 /* urec_a.data */ = {isa = PBXFileReference; lastKnownFileType = file; path = urec_a.data; sourceTree = "<group>"; };
 		1E65125D1F8F6A02002763D8 /* uama_record.pcm */ = {isa = PBXFileReference; lastKnownFileType = file; path = uama_record.pcm; sourceTree = "<group>"; };
 		1E8F15701F8F60E600854176 /* UAMAAVPlayer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UAMAAVPlayer.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -125,6 +128,8 @@
 				1E8F15741F8F60E600854176 /* AppDelegate.m */,
 				1E8F15761F8F60E600854176 /* ViewController.h */,
 				1E8F15771F8F60E600854176 /* ViewController.m */,
+				1E4D7DBA1F971BE600DB6902 /* AMRPlayer.h */,
+				1E4D7DBB1F971BE600DB6902 /* AMRPlayer.m */,
 				1E8F158B1F8F656000854176 /* BestRegards.mp3 */,
 				1E4D7DB61F94AB0000DB6902 /* uama_record.wav */,
 				1E4D7DB81F94AD7F00DB6902 /* uama_record.amr */,
@@ -220,6 +225,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1E4D7DBC1F971BE600DB6902 /* AMRPlayer.m in Sources */,
 				1E4D7DB31F94AA8C00DB6902 /* MQEncodeAudio.m in Sources */,
 				1E8F15781F8F60E600854176 /* ViewController.m in Sources */,
 				1E8F15831F8F60E600854176 /* main.m in Sources */,
