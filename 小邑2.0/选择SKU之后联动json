@@ -1,0 +1,36 @@
+
+
+{
+	SkuID:
+	价格:
+	库存:
+	是否可用:可
+	value:[
+		{
+			propertyID:
+		},
+		{
+			propertyID:
+		},
+		{
+			propertyID:
+		}
+	]
+},
+{
+	组合2:
+	价格:
+	库存:
+	是否可用:可
+	value:[
+		{
+			propertyID:
+		},
+		{
+			propertyID:
+		},
+		{
+			propertyID:
+		}
+	]
+}

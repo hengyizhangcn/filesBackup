@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<!-- saved from url=(0035)http://192.168.10.37:7777/test.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <title>混合app交互Demo</title>
+    <style type="text/css">
+        .preview-wrapper {
+            padding: 0 30px 30px 30px;
+            font-size: 0;
+        }
+        .pic {
+            display: inline-block;
+            margin-right: 30px;
+            width: 100px;
+            height: 100px;
+            background-size: 100%;
+            background-repeat: no-repeat;
+            margin-bottom: 10px;
+        }
+        .preview-wrapper span:last-child {
+            margin-right: 0;
+        }
+        .pic {
+            background-image: url('upload.png');
+        }
+        .scan {
+            border: 1px solid #1B8CF2;
+            border-radius: 4px;
+            padding: 6px 1em;
+            background-color: #1B8CF2;
+            color: #fff;
+        }
+    </style>
+    <script src="./demo_files/jquery.min.js"></script>
+    <script src="./demo_files/hybrid.js"></script>
+</head>
+<body>
+<div id="app">
+    <h2>选择照片demo</h2>
+    <div class="preview-wrapper">
+        <!--<img class="pic" :src="item.src" >-->
+        <label class="pic js-select-pic-hook"></label>
+        <div class="js-preview-container-hook">
+        </div>
+    </div>
+    <hr>
+    <h2>预览大图demo</h2>
+    <div class="preview-wrapper">
+        <img class="pic js-pic-preview-hook" src="./demo_files/sub150156757967097.jpg" alt="">
+        <img class="pic js-pic-preview-hook" src="./demo_files/shopgoods15015676979832.jpg" alt="">
+        <img class="pic js-pic-preview-hook" src="./demo_files/sub150156757967097.jpg" alt="">
+        <img class="pic js-pic-preview-hook" src="./demo_files/shopgoods15015676979832.jpg" alt="">
+    </div>
+    <hr>
+    <h2>扫一扫Demo</h2>
+    <button class="scan js-scan-hook">扫一扫</button>
+    <hr>
+    <h2>安卓富文本图片显示不出来Demo</h2>
+    <p><style>p{text-indent: 0 !important;}</style><img style="width: 120px; height: 120px;" src="./demo_files/imgs150267981451570.jpg" alt=""></p>
+    <hr>
+</div>
+<script type="text/javascript">
+    (function () {
+        function setupWebViewJavascriptBridge(callback) {
+            if (window.WebViewJavascriptBridge) { return callback(WebViewJavascriptBridge); }
+            if (window.WVJBCallbacks) { return window.WVJBCallbacks.push(callback); }
+            window.WVJBCallbacks = [callback];
+            var WVJBIframe = document.createElement('iframe');
+            WVJBIframe.style.display = 'none';
+            WVJBIframe.src = 'wvjbscheme://__BRIDGE_LOADED__';
+            document.documentElement.appendChild(WVJBIframe);
+            setTimeout(function () { document.documentElement.removeChild(WVJBIframe) }, 0)
+        }
+        $('#upload-demo').on('click', function () {
+            if (window.WebViewJavascriptBridge) {
+                window.WebViewJavascriptBridge.callHandler('_app_home_h5_card', '测试v1.0');
+            }
+        });
+        /* 选择图片begin */
+        $(".js-select-pic-hook").on('click', function () {
+            if (window.WebViewJavascriptBridge) {
+                var opt = {
+                    type: 1,
+                    maxCount: 4,
+                    cbName: '_app_getPicList'
+                }
+                window.WebViewJavascriptBridge.callHandler('_app_selectPics', opt);
+            } else {
+                alert('选择图片失败');
+            }
+        });
+        /* 选择图片end */
+
+        /* 删除选中的图片begin */
+        $(".js-preview-pic-hook").on('click', function () {
+            alert('点我了,我要调用原生的_app_deletePic方法了');
+            if (window.WebViewJavascriptBridge) {
+                var opt = {
+                    currentIndex: 1,
+                    cbName: '_app_deletePic'
+                }
+                window.WebViewJavascriptBridge.callHandler('_app_deletePic', opt);
+            } else {
+                alert('选择图片失败');
+            }
+        });
+        /* 删除选中的图片end */
+
+        /* 预览大图begin */
+        $(".js-pic-preview-hook").on('click', function () {
+            if (window.WebViewJavascriptBridge) {
+                var opt = {
+                    currentIndex: 1,
+                    picList: ['http://121.40.102.80:7080/img/201708/sub/sub150156757967097.jpg',
+                        'http://121.40.102.80:7080/img/201708/shopgoods/shopgoods15015676979832.jpg',
+                        'http://121.40.102.80:7080/img/201708/sub/sub150156757967097.jpg',
+                        'http://121.40.102.80:7080/img/201708/shopgoods/shopgoods15015676979832.jpg']
+                };
+                window.WebViewJavascriptBridge.callHandler('_app_previewPic', opt);
+            } else {
+                alert('预览大图失败');
+            }
+        });
+        /* 预览大图end */
+
+        /* 扫一扫begin */
+        $(".js-scan-hook").on('click', function () {
+            alert('调用扫一扫');
+            if (window.WebViewJavascriptBridge) {
+                window.WebViewJavascriptBridge.callHandler('_app_home_h5_card', '_app_getScanContent');
+            } else {
+                alert('调用失败');
+            }
+        });
+        /* 扫一扫end */
+    })()
+</script>
+
+
+</body></html>
