@@ -27,7 +27,6 @@ import subprocess
 
 pbxprojPath = sys.argv[1] + '/project.pbxproj'
 
-print pbxprojPath
 f = open(pbxprojPath)
 
 fileReadLines = f.readlines()
@@ -102,8 +101,13 @@ for fileType in findFileTypes:
 
 f.close()
 
-
-subprocess.call(['diff', targetNamesList[0], targetNamesList[1]])
+for targetName in targetNamesList:
+	j = targetNamesList.index(targetName) + 1
+	while j < len(targetNamesList):
+		print '-----------------------------------------------------'
+		print targetName + '和' + targetNamesList[j] + '的不同如下:\n'
+		subprocess.call(['diff', targetName, targetNamesList[j]])
+		j=j+1
 
 for file in targetNamesList:
 	os.remove(file)
