@@ -68,88 +68,38 @@ for target in targetInfosList:
 			f1.truncate() 
 			f1.close()
 
-# 步骤二 查找Sources
-sourcesBegin = fileContent.find('/* Begin PBXSourcesBuildPhase section */') + len('/* Begin PBXSourcesBuildPhase section */')
-sourcesEnd = fileContent.find('/* End PBXSourcesBuildPhase section */')
-sourcesInfo = fileContent[sourcesBegin:sourcesEnd]
+# 步骤二 查找Sources\Frameworks\Resources
 
-sourcesInfoList = sourcesInfo.split('};')
+findFileTypes = ['PBXSourcesBuildPhase', 'PBXFrameworksBuildPhase', 'PBXResourcesBuildPhase']
 
-for sources in sourcesInfoList:
-	sourcesIndex = sourcesInfoList.index(sources)
-	sourcesList = []
+for fileType in findFileTypes:
+	sourcesBegin = fileContent.find('/* Begin '+fileType+' section */') + len('/* Begin '+fileType+' section */')
+	sourcesEnd = fileContent.find('/* End '+fileType+' section */')
+	sourcesInfo = fileContent[sourcesBegin:sourcesEnd]
 
-	if sources.find('files = (') != -1 and sourcesIndex < len(targetNamesList):
-		filesBegin = sources.index('files = (') + len('files = (')
-		filesEnd = sources.index(');')
-		filesStr = sources[filesBegin:filesEnd]
-		filesInfoList = filesStr.split('*/,')
+	sourcesInfoList = sourcesInfo.split('};')
 
-		for filesInfo in filesInfoList:
-			filesInfoStr = filesInfo.split(' ')
-			if len(filesInfoStr) >= 3:
-					sourcesList.append(filesInfoStr[3])
-		sourcesList.sort()
-		f2 = open(targetNamesList[sourcesIndex], 'r+')
-		for i in sourcesList:
-			f2.write(str(i)+'\r\n')
-		f2.close()
+	for sources in sourcesInfoList:
+		sourcesIndex = sourcesInfoList.index(sources)
+		sourcesList = []
 
-# 步骤三 查找framework
-f.seek(0)
-frameworksBegin = fileContent.find('/* Begin PBXFrameworksBuildPhase section */') + len('/* Begin PBXFrameworksBuildPhase section */')
-frameworksEnd = fileContent.find('/* End PBXFrameworksBuildPhase section */')
-frameworksInfo = fileContent[frameworksBegin:frameworksEnd]
+		if sources.find('files = (') != -1 and sourcesIndex < len(targetNamesList):
+			filesBegin = sources.index('files = (') + len('files = (')
+			filesEnd = sources.index(');')
+			filesStr = sources[filesBegin:filesEnd]
+			filesInfoList = filesStr.split('*/,')
 
-frameworksInfoList = frameworksInfo.split('};')
+			for filesInfo in filesInfoList:
+				filesInfoStr = filesInfo.split(' ')
+				if len(filesInfoStr) >= 3:
+						sourcesList.append(filesInfoStr[3])
+			sourcesList.sort()
+			f2 = open(targetNamesList[sourcesIndex], 'a+')
+			for i in sourcesList:
+				f2.write(str(i)+'\r\n')
+			f2.close()
 
-for frameworks in frameworksInfoList:
-	frameworksIndex = frameworksInfoList.index(frameworks)
-	frameworksList = []
 
-	if frameworks.find('files = (') != -1 and frameworksIndex < len(targetNamesList):
-		filesBegin = frameworks.index('files = (') + len('files = (')
-		filesEnd = frameworks.index(');')
-		filesStr = frameworks[filesBegin:filesEnd]
-		filesInfoList = filesStr.split('*/,')
-
-		for filesInfo in filesInfoList:
-			filesInfoStr = filesInfo.split(' ')
-			if len(filesInfoStr) >= 3:
-					frameworksList.append(filesInfoStr[3])
-		frameworksList.sort()
-		f3 = open(targetNamesList[frameworksIndex], 'a+')
-		for i in frameworksList:
-			f3.write(str(i)+'\r\n')
-		f3.close()
-
-# 第三步 查找resources
-f.seek(0)
-resourcesBegin = fileContent.find('/* Begin PBXResourcesBuildPhase section */') + len('/* Begin PBXResourcesBuildPhase section */')
-resourcesEnd = fileContent.find('/* End PBXResourcesBuildPhase section */')
-resourcesInfo = fileContent[resourcesBegin:resourcesEnd]
-
-resourcesInfoList = resourcesInfo.split('};')
-
-for resources in resourcesInfoList:
-	resourcesIndex = resourcesInfoList.index(resources)
-	resourcesList = []
-
-	if resources.find('files = (') != -1 and resourcesIndex < len(targetNamesList):
-		filesBegin = resources.index('files = (') + len('files = (')
-		filesEnd = resources.index(');')
-		filesStr = resources[filesBegin:filesEnd]
-		filesInfoList = filesStr.split('*/,')
-
-		for filesInfo in filesInfoList:
-			filesInfoStr = filesInfo.split(' ')
-			if len(filesInfoStr) >= 3:
-					resourcesList.append(filesInfoStr[3])
-		resourcesList.sort()
-		f4 = open(targetNamesList[resourcesIndex], 'a+')
-		for i in resourcesList:
-			f4.write(str(i)+'\r\n')
-		f4.close()
 f.close()
 
 
