@@ -10,4 +10,8 @@ import Foundation
 
 print("Hello, World!")
 
-Person.init()
+let person = Person.init()
+
+
+var person1 = Person()
+person.account?.addObserver(person1, forKeyPath: "balance", options: [.new], context: &PersonAccountBalanceContext)

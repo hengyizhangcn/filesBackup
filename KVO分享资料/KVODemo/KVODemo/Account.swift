@@ -34,4 +34,8 @@ class Account: NSObject {
         }
         return automatic
     }
+    
+    func printInfo() {
+        print("isa:", NSStringFromClass(object_getClass(self)!), ", supper class:", class_getSuperclass(object_getClass(self)!)!)
+    }
 }

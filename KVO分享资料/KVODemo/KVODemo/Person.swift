@@ -18,12 +18,15 @@ class Person: NSObject {
         super.init()
         account = Account()
         
-        registerAsObserverForAccount(account: account)
-        account!.balance = 14.0
-//        account?.setValue(14, forKeyPath: "balance")
-//        account?.setValue(24, forKey: "balance")
+        account!.printInfo()
         
-        printInfo()
+        registerAsObserverForAccount(account: account)
+        
+//        account!.balance = 14.0
+//        account?.setValue(14, forKeyPath: "balance")
+        account?.setValue(24, forKey: "balance")
+        
+//        account!.printInfo()
     }
     
     deinit {
@@ -32,6 +35,7 @@ class Person: NSObject {
     
     func registerAsObserverForAccount(account: Account?) -> Void {
         account?.addObserver(self, forKeyPath: "balance", options: [.new], context: &PersonAccountBalanceContext)
+        
     }
     
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
@@ -48,9 +52,5 @@ class Person: NSObject {
     
     func unregisterAsObserverForAccount(account: Account?) {
         account?.removeObserver(self, forKeyPath: "balance", context: &PersonAccountBalanceContext)
-    }
-    
-    func printInfo() {
-        print("isa:", NSStringFromClass(object_getClass(type(of: self))!), ", supper class:", class_getSuperclass(type(of: self))!)
     }
 }
