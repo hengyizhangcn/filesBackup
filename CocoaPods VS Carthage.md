@@ -76,13 +76,47 @@ binary "OtherFrameworks.json"
 
 4.Targets->Build Settings->Framework Search Paths添加`$(PROJECT_DIR)/Carthage/Build/iOS`
 
-5.Targets->General->Embedded Binaries添加Carthage/Build/iOS文件中的动态库
+5.Targets->General->Linked Frameworks and Libraries添加Carthage/Build/iOS文件中的动态库
 
-Linked Frameworks and Libraries中也会自动添加
+然后在Embedded Binaries中添加选择动态库，Linked Frameworks and Libraries中也会自动添加，删除重复的即可
 
 6.工程中引用私有库文件的语法有些变化
 
 如需要从`import "YTKBatchRequest.h"`变成`import <YTKNetwork/YTKBatchRequest.h>`
+
+## 三 项目中依赖库对Carthage的支持程度
+
+| 依赖         | CocoaPods | Carthage | 备注 |
+| ------------ | :-------: | :------: | :------: |
+| FDTemplate   | √ | √ |
+| YTKNetwork   | √ | √ |
+| AFNetworking | √ | √ |
+| SDWebImage   |√ | √ |
+| IQKeyboardManager | √ | √ |
+| MBProgressHUD | √ | √ |
+| MJExtension | √ | √ |
+| SDWebImage | √ | √ |
+| HMSegmentedControl | √ | √ |
+| BlocksKit | √ | √ | 2.2.5支持，但只用2.2.3
+| MJRefresh | √ | √ |
+| KVOController | √ | √ |
+| TZImagePickerController | √ | √ | 2017.11.3 |
+| SZTextView | √ | √ |
+| SVProgressHUD | √ | √ |
+| MWPhotoBrowser | √ | × |
+| OpenUDID | √ | × |
+| UIDeviceIdentifier | √ | × |
+| UIAlertView-Blocks | √ | × |
+| JPush | √ | × |
+| UMengAnalytics | √ | × | 不支持http |
+| NullSafe | √ | × |
+| AKNumericFormatter | √ | × |
+| DZNEmptyDataSet | √ | × |
+| libqrencode | √ | × |
+| libextobjc | √ | × |
+| TYMProgressBarView | √ | × |
+| MJPopupViewController | √ | × |
+| SCBaseFramework | √ | × | 私有库 |
 
 
 
