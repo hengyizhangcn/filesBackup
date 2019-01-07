@@ -10,6 +10,7 @@ import Cocoa
 
 class Account: NSObject {
     
+    //swift本身屏幕了运行时机制 ，加上dynamic关键字获取动态性
     @objc dynamic var balance:Double = 0.0
     {
         willSet {
