@@ -25,17 +25,13 @@ class Account: NSObject {
     override class func automaticallyNotifiesObservers(forKey key: String) -> Bool
     {
         var automatic = false
-        if key == "balance"
-        {
-            automatic = false
-        }
-        else {
+//        if key == "balance"
+//        {
+//            automatic = false
+//        }
+//        else {
             automatic = super.automaticallyNotifiesObservers(forKey: key)
-        }
+//        }
         return automatic
-    }
-    
-    func printInfo() {
-        print("isa:", NSStringFromClass(object_getClass(self)!), ", supper class:", class_getSuperclass(object_getClass(self)!)!)
     }
 }

@@ -8,10 +8,17 @@
 
 import Foundation
 
-print("Hello, World!")
-
 let person = Person.init()
 
+//isKnownUniquelyReferenced
 
-var person1 = Person()
-person.account?.addObserver(person1, forKeyPath: "balance", options: [.new], context: &PersonAccountBalanceContext)
+final class Box<A> {
+    var unbox: A
+    init(_ value: A) { self.unbox = value }
+}
+var z = Box(NSMutableData())
+
+isKnownUniquelyReferenced(&z)
+
+//var person1 = Person()
+//person.account?.addObserver(person1, forKeyPath: "balance", options: [.new], context: &PersonAccountBalanceContext)

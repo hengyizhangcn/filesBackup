@@ -18,15 +18,15 @@ class Person: NSObject {
         super.init()
         account = Account()
         
-        account!.printInfo()
+        printInfo()
         
         registerAsObserverForAccount(account: account)
+        printInfo()
         
 //        account!.balance = 14.0
 //        account?.setValue(14, forKeyPath: "balance")
         account?.setValue(24, forKey: "balance")
         
-//        account!.printInfo()
     }
     
     deinit {
@@ -52,5 +52,9 @@ class Person: NSObject {
     
     func unregisterAsObserverForAccount(account: Account?) {
         account?.removeObserver(self, forKeyPath: "balance", context: &PersonAccountBalanceContext)
+    }
+    
+    func printInfo() {
+        print("isa:", NSStringFromClass(object_getClass(account!)!), ", supper class:", class_getSuperclass(object_getClass(account!)!)!)
     }
 }
