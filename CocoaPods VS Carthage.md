@@ -73,7 +73,7 @@ binary "AMapLocationKit.json"
 
 ```
 {
-    "6.5.0": "https://a.amap.com/lbs/static/zip/AMap_iOS_3DMap_Lib_V6.5.0.zip"
+    "5.7.0": "https://a.amap.com/lbs/static/zip/AMap_iOS_3DMap_Lib_V5.7.0.zip"
 }
 ```
 
@@ -81,7 +81,7 @@ AMapLocationKit.json内容如下:
 
 ```
 {
-    "6.5.0": "https://a.amap.com/lbs/static/zip/AMap_iOS_Loc_Lib_V2.6.1.zip"
+    "2.6.0": "https://a.amap.com/lbs/static/zip/AMap_iOS_Loc_Lib_V2.6.0.zip"
 }
 ```
 
