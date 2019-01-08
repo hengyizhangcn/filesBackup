@@ -21,11 +21,11 @@ pod 'libextobjc', '~>0.4.1', :subspecs => ['EXTScope']
 ```
 github "yuantiku/YTKNetwork" ~> 2.0.3 //这里必须是双引号，而且库名前面需要指定库的作者用户名
 git "http://121.40.102.80:8888/libs/FDTemplate.git" == 1.5.1 //引入私有库并指定1.5.1版本，注:私有库采用gitlab搭建
-binary "OtherFrameworks.json" 
+binary "JPush.json" 
 github "jspahrsummers/libextobjc" ~> 0.4.1 //Carthage不支持指定subspecs(如EXTScope)，需要编译整个库
 ```
 
-注：由于JPush和UMengAnalytics使用了zip文件，需要把对JPush和UMengAnalytics的依赖写入json文件中，内容如下（此处命名了OtherFrameworks.json，使用的相对路径）：
+注：由于JPush和UMengAnalytics使用了zip文件，需要把对JPush和UMengAnalytics的依赖写入json文件中，内容如下（此处命名了JPush.json，使用的相对路径）：
 
 >{
 >
@@ -56,21 +56,34 @@ No tagged versions found for github "xx/xxx"
 
 ## 二 接入实践
 
-注：部分使用Carthage，如YTKNetwork，JPush及私有库FDTemplate
+注：部分使用Carthage，如YTKNetwork，AMap3DMap-NO-IDFA 及AMapLocation-NO-IDFA 
 
-1.隐去Podfile里面的YTKNetwork，JPush及FDTemplate三个库的引用
+1.隐去Podfile里面的YTKNetwork，AMap3DMap-NO-IDFA 及AMapLocation-NO-IDFA 三个库的引用
 
 2.新建Cartfile文件，引入此三个库
 
 ```
 github "yuantiku/YTKNetwork" ~> 2.0.3
 
-git "http://git.uama.com.cn:8888/libs/FDTemplate.git" == 1.5.1
-
-binary "OtherFrameworks.json"
+binary "MAMapKit.json"
+binary "AMapLocationKit.json"
 ```
 
-其中OtherFrameworks.json内容如下:
+其中MAMapKit.json内容如下:
+
+```
+{
+    "6.5.0": "https://a.amap.com/lbs/static/zip/AMap_iOS_3DMap_Lib_V6.5.0.zip"
+}
+```
+
+AMapLocationKit.json内容如下:
+
+```
+{
+    "6.5.0": "https://a.amap.com/lbs/static/zip/AMap_iOS_Loc_Lib_V2.6.1.zip"
+}
+```
 
 3.运行Carthage update —platform iOS
 
@@ -86,11 +99,11 @@ binary "OtherFrameworks.json"
 
 ## 三 项目中依赖库对Carthage的支持程度
 
-| 依赖                                       | CocoaPods | Carthage | remark |
-| ---------------------------------------- | :-------: | :------: | :----: |
-| FDTemplate、YTKNetwork、AFNetworking、SDWebImage、IQKeyboardManager、MBProgressHUD、MJExtension、HMSegmentedControl、MJRefresh、KVOController、TZImagePickerController、SZTextView、SVProgressHUD、BlocksKit |     √     |    √     |   14   |
-| MWPhotoBrowser、OpenUDID、UIDeviceIdentifier、UIAlertView-Blocks、NullSafe、AKNumericFormatter、DZNEmptyDataSet、libqrencode、libextobjc、TYMProgressBarView、MJPopupViewController |     √     |    ×     |   11   |
-| JPush、UMengAnalytics                     |     √     |    ×     | zip资源 |
+| 依赖                                                         | CocoaPods | Carthage | remark |
+| ------------------------------------------------------------ | :-------: | :------: | :----: |
+| FDTemplate、YTKNetwork、AFNetworking、SDWebImage、IQKeyboardManager、MBProgressHUD、MJExtension、HMSegmentedControl、MJRefresh、KVOController、TZImagePickerController、SZTextView、SVProgressHUD、BlocksKit、  MXParallaxHeader、 MZTimerLabel 、 MSWeakTimer、AMap3DMap-NO-IDFA、AMapLocation-NO-IDFA |     √     |    √     |   17   |
+| MWPhotoBrowser、OpenUDID、UIDeviceIdentifier、UIAlertView-Blocks、NullSafe、AKNumericFormatter、DZNEmptyDataSet、libqrencode、libextobjc、TYMProgressBarView、MJPopupViewController、 ZFPlayer、 JZLocationConverter、WebViewJavascriptBridge、 CircleProgressBar、 DACircularProgress、 VTMagic、 DYRateView、 CSStickyHeaderFlowLayout、 UITextView+Placeholder、 JKCountDownButton |     √     |    ×     |   21   |
+| JPush、UMengAnalytics、  AMapSearch-NO-IDFA                  |     √     |    ×     |   5    |
 | SCBaseFramework、SCCommonModule、SCNetWorkModule、SCSocketModule、SCStatisticLib、EagleMonitoring、SCAliyunOSSLib、SCAlipay、SCImageEditSDK、UIBubbleTableView、SmartDoorUnlock、SCUnionPay、 SCVoiceKeeperModule、SCShareLib、 SCUniversalQRCodeModule |     √     |    ×     |   15   |
 
 
