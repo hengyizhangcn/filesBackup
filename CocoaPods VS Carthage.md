@@ -22,7 +22,7 @@ pod 'libextobjc', '~>0.4.1', :subspecs => ['EXTScope']
 github "yuantiku/YTKNetwork" ~> 2.0.3 //这里必须是双引号，而且库名前面需要指定库的作者用户名
 git "http://121.40.102.80:8888/libs/FDTemplate.git" == 1.5.1 //引入私有库并指定1.5.1版本，注:私有库采用gitlab搭建
 binary "OtherFrameworks.json" 
-github "jspahrsummers/libextobjc" ~> 0.4.1 //Carthage不支持指定subspecs，需要编译整个库
+github "jspahrsummers/libextobjc" ~> 0.4.1 //Carthage不支持指定subspecs(如EXTScope)，需要编译整个库
 ```
 
 注：由于JPush和UMengAnalytics使用了zip文件，需要把对JPush和UMengAnalytics的依赖写入json文件中，内容如下（此处命名了OtherFrameworks.json，使用的相对路径）：
@@ -86,37 +86,12 @@ binary "OtherFrameworks.json"
 
 ## 三 项目中依赖库对Carthage的支持程度
 
-| 依赖         | CocoaPods | Carthage | 备注 |
-| ------------ | :-------: | :------: | :------: |
-| FDTemplate   | √ | √ |
-| YTKNetwork   | √ | √ |
-| AFNetworking | √ | √ |
-| SDWebImage   |√ | √ |
-| IQKeyboardManager | √ | √ |
-| MBProgressHUD | √ | √ |
-| MJExtension | √ | √ |
-| SDWebImage | √ | √ |
-| HMSegmentedControl | √ | √ |
-| BlocksKit | √ | √ | 2.2.5支持，但只用2.2.3
-| MJRefresh | √ | √ |
-| KVOController | √ | √ |
-| TZImagePickerController | √ | √ | 2017.11.3 |
-| SZTextView | √ | √ |
-| SVProgressHUD | √ | √ |
-| MWPhotoBrowser | √ | × |
-| OpenUDID | √ | × |
-| UIDeviceIdentifier | √ | × |
-| UIAlertView-Blocks | √ | × |
-| JPush | √ | × |
-| UMengAnalytics | √ | × | 不支持http |
-| NullSafe | √ | × |
-| AKNumericFormatter | √ | × |
-| DZNEmptyDataSet | √ | × |
-| libqrencode | √ | × |
-| libextobjc | √ | × |
-| TYMProgressBarView | √ | × |
-| MJPopupViewController | √ | × |
-| SCBaseFramework | √ | × | 私有库 |
+| 依赖                                       | CocoaPods | Carthage | remark |
+| ---------------------------------------- | :-------: | :------: | :----: |
+| FDTemplate、YTKNetwork、AFNetworking、SDWebImage、IQKeyboardManager、MBProgressHUD、MJExtension、HMSegmentedControl、MJRefresh、KVOController、TZImagePickerController、SZTextView、SVProgressHUD、BlocksKit |     √     |    √     |   14   |
+| MWPhotoBrowser、OpenUDID、UIDeviceIdentifier、UIAlertView-Blocks、NullSafe、AKNumericFormatter、DZNEmptyDataSet、libqrencode、libextobjc、TYMProgressBarView、MJPopupViewController |     √     |    ×     |   11   |
+| JPush、UMengAnalytics                     |     √     |    ×     | zip资源 |
+| SCBaseFramework、SCCommonModule、SCNetWorkModule、SCSocketModule、SCStatisticLib、EagleMonitoring、SCAliyunOSSLib、SCAlipay、SCImageEditSDK、UIBubbleTableView、SmartDoorUnlock、SCUnionPay、 SCVoiceKeeperModule、SCShareLib、 SCUniversalQRCodeModule |     √     |    ×     |   15   |
 
 
 
