@@ -99,11 +99,11 @@ AMapLocationKit.json内容如下:
 
 ## 三 项目中依赖库对Carthage的支持程度
 
-| 依赖                                                         | CocoaPods | Carthage | remark |
-| ------------------------------------------------------------ | :-------: | :------: | :----: |
-| FDTemplate、YTKNetwork、AFNetworking、SDWebImage、IQKeyboardManager、MBProgressHUD、MJExtension、HMSegmentedControl、MJRefresh、KVOController、TZImagePickerController、SZTextView、SVProgressHUD、BlocksKit、  MXParallaxHeader、 MZTimerLabel 、 MSWeakTimer、AMap3DMap-NO-IDFA、AMapLocation-NO-IDFA |     √     |    √     |   17   |
+| 依赖                                       | CocoaPods | Carthage | remark |
+| ---------------------------------------- | :-------: | :------: | :----: |
+| FDTemplate、YTKNetwork、AFNetworking、SDWebImage、IQKeyboardManager、MBProgressHUD、MJExtension、HMSegmentedControl、MJRefresh、KVOController、TZImagePickerController、SZTextView、SVProgressHUD、BlocksKit、  MXParallaxHeader、 MZTimerLabel 、 MSWeakTimer |     √     |    √     |   17   |
 | MWPhotoBrowser、OpenUDID、UIDeviceIdentifier、UIAlertView-Blocks、NullSafe、AKNumericFormatter、DZNEmptyDataSet、libqrencode、libextobjc、TYMProgressBarView、MJPopupViewController、 ZFPlayer、 JZLocationConverter、WebViewJavascriptBridge、 CircleProgressBar、 DACircularProgress、 VTMagic、 DYRateView、 CSStickyHeaderFlowLayout、 UITextView+Placeholder、 JKCountDownButton |     √     |    ×     |   21   |
-| JPush、UMengAnalytics、  AMapSearch-NO-IDFA                  |     √     |    ×     |   5    |
+| JPush、UMengAnalytics、  AMapSearch-NO-IDFA、AMap3DMap-NO-IDFA、AMapLocation-NO-IDFA |     √     |    ×     |   5   |
 | SCBaseFramework、SCCommonModule、SCNetWorkModule、SCSocketModule、SCStatisticLib、EagleMonitoring、SCAliyunOSSLib、SCAlipay、SCImageEditSDK、UIBubbleTableView、SmartDoorUnlock、SCUnionPay、 SCVoiceKeeperModule、SCShareLib、 SCUniversalQRCodeModule |     √     |    ×     |   15   |
 
 
