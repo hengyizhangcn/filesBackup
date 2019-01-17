@@ -31,9 +31,9 @@ github "jspahrsummers/libextobjc" ~> 0.4.1 //Carthage不支持指定subspecs(如
 
 >{
 >
->​    "3.0.6":"https://sdkfiledl.jiguang.cn/cocoapods/jpush/JPush-iOS-3.1.1.zip",
+>​    "3.0.6":"<https://sdkfiledl.jiguang.cn/cocoapods/jpush/JPush-iOS-3.1.1.zip",>
 >
->​   // "4.2.4": "http://dev.umeng.com/system/resources/W1siZiIsIjIwMTcvMDEvMjIvMTFfMDJfMDZfMjk3X3Vtc2RrX0lPU19hbmFseWljc19pZGZhX3Y0LjIuNC56aXAiXV0/umsdk_IOS_analyics_idfa_v4.2.4.zip"
+>​   // "4.2.4": "<http://dev.umeng.com/system/resources/W1siZiIsIjIwMTcvMDEvMjIvMTFfMDJfMDZfMjk3X3Vtc2RrX0lPU19hbmFseWljc19pZGZhX3Y0LjIuNC56aXAiXV0/umsdk_IOS_analyics_idfa_v4.2.4.zip>"
 >
 >}
 >
